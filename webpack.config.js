@@ -2,9 +2,9 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
-    path: path.join(__dirname, "/public"),
+    path: path.join(__dirname, "/dist"),
     filename: "main.js",
     clean: true,
   },
@@ -17,7 +17,7 @@ module.exports = {
     liveReload: true,
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -35,6 +35,11 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
+      },
+      {
+        test: /(.ts$|.tsx$)/,
+        exclude: /node_modules/,
+        use: ["ts-loader"],
       },
     ],
   },

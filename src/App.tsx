@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div>
       <h1>Hello world!</h1>
-      <Button />
+      <Button onClick={() => console.log("hello world")} />
     </div>
   );
 };
